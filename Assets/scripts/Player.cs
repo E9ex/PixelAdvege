@@ -68,15 +68,7 @@ public class Player : MonoBehaviour
             kostuMu = false;
         }
         playerAnim.SetBool("kosuyorMu", kostuMu);
-        if (rb.velocity.y > 0.1f)
-        {
-            isjumpin = true;
-        }
-        else if (rb.velocity.y < -0.1f)
-        {
-            isjumpin = false;
-        }
-        playerAnim.SetBool("zipliyormU", isjumpin);
+        
     }
 
 }

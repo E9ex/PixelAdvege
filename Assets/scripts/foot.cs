@@ -22,14 +22,10 @@ public class foot : MonoBehaviour
        
         if (IsGround == true && Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("zıpladik true.");
             rb.velocity = new Vector2(rb.velocity.x, jumpspeed);
-            playeranim.SetBool("zipliyormU",true);
+            playeranim.SetTrigger("zipliyorMu");
         }
-        else if (rb.velocity.y<.1f)
-        {
-            playeranim.SetBool("zipliyormU",false);
-        }
+     
     }
 }
 
