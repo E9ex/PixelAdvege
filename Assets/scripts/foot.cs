@@ -6,34 +6,30 @@ using UnityEngine;
 public class foot : MonoBehaviour
 {
     [SerializeField]  LayerMask layer;// bu değişken 'Raycast' işlemi için kullanılan layer'ı belirler.
-   public  bool yerdeMi = true; // bu değişken zemine dokunulup dokunulmadığını kontrol eder.
+    public  bool IsGround = true;// bu değişken zemine dokunulup dokunulmadığını kontrol eder.
     [SerializeField] Rigidbody2D rb;
     public float jumpspeed = 10f;
-    [SerializeField] Animator playeraanim;
-    private bool hasJumped = false;
-    
-
-
+    [SerializeField] private Animator playeranim;
     void Update()
     {
-        RaycastHit2D iscollider = Physics2D.Raycast(transform.position, Vector2.down, 0.25f, layer);
-        if (iscollider != null)
+        RaycastHit2D iscollider = Physics2D.Raycast(transform.position, Vector2.down, 0.25f, layer); 
+
+        if (iscollider.collider != null) 
+            IsGround = true;
+        else 
+            IsGround = false;
+
+       
+        if (IsGround == true && Input.GetKeyDown(KeyCode.Space))
         {
-            yerdeMi = true;
-        }
-        else
-        {
-            yerdeMi = false;
-        }
-        if (yerdeMi&&Input.GetKeyDown(KeyCode.Space)&&rb.velocity.y==0)
-        {
+            Debug.Log("zıpladik true.");
             rb.velocity = new Vector2(rb.velocity.x, jumpspeed);
-           playeraanim.SetBool("zipliyormU",true);
+            playeranim.SetBool("zipliyormU",true);
         }
-        /*else if (rb.velocity.y<-1f)
+        else if (rb.velocity.y<.1f)
         {
-            playeraanim.SetBool("zipliyormU",false);
-        }*/
-      
+            playeranim.SetBool("zipliyormU",false);
+        }
     }
 }
+

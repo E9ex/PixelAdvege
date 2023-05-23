@@ -8,15 +8,15 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     private float speed = 5f;
     private Animator playerAnim;
+    public bool kostuMu = false;
     private foot _foot;
-    public bool isjumpin = false;
-   
-
+    private bool isjumpin = false;
     private void Awake()
     {
+        _foot = GetComponentInChildren<foot>();
         rb = GetComponent<Rigidbody2D>();
         playerAnim = GetComponent<Animator>();
-        _foot = GameObject.FindObjectOfType<foot>();
+       
     }
 
     void Start()
@@ -33,12 +33,11 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         float h = Input.GetAxis("Horizontal");
-      //  float y = Input.GetAxis("Vertical");
+      // float y = Input.GetAxis("Vertical");
         move(h);
         playerturn(h);
         PlayerAnim(h);
-        //JumpAnim();
-
+        
     }
 
     void move(float h)
@@ -59,29 +58,26 @@ public class Player : MonoBehaviour
     }
 
     public void PlayerAnim(float h)
-    {
-        playerAnim.SetBool("kosuyorMu", true);
-        if (h == 0)
+    {  
+        if (h != 0)
         {
-            playerAnim.SetBool("kosuyorMu", false);
+            kostuMu = true;
         }
-        else if (rb.velocity.y<-.1f)
+        else
         {
-            playerAnim.SetBool("zipliyormU",false);
+            kostuMu = false;
         }
-    }
-
-   /* public void JumpAnim()
-    {
-        if (_foot.transform.position.y == 0&&!isjumpin)
+        playerAnim.SetBool("kosuyorMu", kostuMu);
+        if (rb.velocity.y > 0.1f)
         {
             isjumpin = true;
-            playerAnim.SetBool("zipliyormU",true);
         }
-        else if(_foot.yerdeMi)
+        else if (rb.velocity.y < -0.1f)
         {
             isjumpin = false;
-            playerAnim.SetBool("zipliyormU",false);
         }
-    }*/
+        playerAnim.SetBool("zipliyormU", isjumpin);
+    }
+
 }
+
