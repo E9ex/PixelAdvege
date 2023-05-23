@@ -85,6 +85,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3334520671240801122}
+  - {fileID: 7073635311455609684}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -126,8 +127,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1425205889
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 041f56d6a022446e8b09e8a5be7f79ab, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -172,7 +173,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7dd237235bcd4a31a3466437e33393f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kostuMu: 0
+  bulletprefab: {fileID: 7516401096093371386, guid: 2f0132a88e4ff42f5ab6235549806ce4, type: 3}
+  bulletspawn: {fileID: 7073635311455609684}
 --- !u!50 &3334520671609003020
 Rigidbody2D:
   serializedVersion: 4
@@ -220,3 +222,47 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.0108738, y: 1.8803828}
   m_EdgeRadius: 0
+--- !u!1 &5701772161227649560
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7073635311455609684}
+  - component: {fileID: 5019671497245931492}
+  m_Layer: 0
+  m_Name: bullet
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7073635311455609684
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5701772161227649560}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.558, y: -0.143, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3334520671609003019}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5019671497245931492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5701772161227649560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 083b381fa79ec49d8aa6b1df1214def2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

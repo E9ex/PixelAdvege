@@ -8,15 +8,15 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     private float speed = 5f;
     private Animator playerAnim;
-    public bool kostuMu = false;
-    private foot _foot;
-    private bool isjumpin = false;
+    private bool kostuMu = false;
+    [SerializeField] private GameObject bulletprefab;
+    [SerializeField] private Transform bulletspawn;
+
     private void Awake()
     {
-        _foot = GetComponentInChildren<foot>();
+        
         rb = GetComponent<Rigidbody2D>();
         playerAnim = GetComponent<Animator>();
-       
     }
 
     void Start()
@@ -27,13 +27,13 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        Shoot();
     }
 
     private void FixedUpdate()
     {
         float h = Input.GetAxis("Horizontal");
-      // float y = Input.GetAxis("Vertical");
+      
         move(h);
         playerturn(h);
         PlayerAnim(h);
@@ -71,5 +71,23 @@ public class Player : MonoBehaviour
         
     }
 
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.CompareTag("Enemy"))
+        {
+            Destroy(gameObject,0.5f);//player i yok ediyor. şuan..
+            playerAnim.SetTrigger("death");
+        }
+    }
+
+    public void Shoot()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Instantiate(bulletprefab, bulletspawn.position, Quaternion.identity);
+            playerAnim.SetTrigger("shoot");
+            
+        }
+    }
 }
 
