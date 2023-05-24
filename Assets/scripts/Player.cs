@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     private bool kostuMu = false;
     [SerializeField] private GameObject bulletprefab;
     [SerializeField] private Transform bulletspawn;
+    [SerializeField] private Transform bulletTile;
 
     private void Awake()
     {
@@ -33,11 +34,9 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         float h = Input.GetAxis("Horizontal");
-      
         move(h);
         playerturn(h);
         PlayerAnim(h);
-        
     }
 
     void move(float h)
@@ -84,9 +83,8 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            Instantiate(bulletprefab, bulletspawn.position, Quaternion.identity);
+            Instantiate(bulletprefab, bulletspawn.position, Quaternion.identity,bulletTile);
             playerAnim.SetTrigger("shoot");
-            
         }
     }
 }
