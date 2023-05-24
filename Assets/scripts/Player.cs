@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 {
     private Rigidbody2D rb;
     private float speed = 5f;
-    private Animator playerAnim;
+    public Animator playerAnim;
     private bool kostuMu = false;
     [SerializeField] private GameObject bulletprefab;
     [SerializeField] private Transform bulletspawn;
@@ -75,6 +75,11 @@ public class Player : MonoBehaviour
         if (col.CompareTag("Enemy"))
         {
             Destroy(gameObject,0.5f);//player i yok ediyor. şuan..
+            playerAnim.SetTrigger("death");
+        }
+        if (col.CompareTag("death"))
+        {
+            Destroy(gameObject,0.5f);
             playerAnim.SetTrigger("death");
         }
     }
