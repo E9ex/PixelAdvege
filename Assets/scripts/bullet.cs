@@ -9,9 +9,12 @@ public class bullet : MonoBehaviour
     private Player _player;
     
     
+    
     private void Awake()
     {
         _player = GameObject.FindObjectOfType<Player>();
+        
+
     }
     void Start()
     {
@@ -27,7 +30,6 @@ public class bullet : MonoBehaviour
         if (col.CompareTag("Enemy"))
         {
             Destroy(col.gameObject,0.5f);
-          
             Destroy(gameObject);
         }
     }

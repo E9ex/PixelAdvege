@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 {
     private Rigidbody2D rb;
     private float speed = 5f;
-    public Animator playerAnim;
+    private Animator playerAnim;
     private bool kostuMu = false;
     [SerializeField] private GameObject bulletprefab;
     [SerializeField] private Transform bulletspawn;
@@ -72,12 +72,7 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.CompareTag("Enemy"))
-        {
-            Destroy(gameObject,0.5f);//player i yok ediyor. şuan..
-            playerAnim.SetTrigger("death");
-        }
-        if (col.CompareTag("death"))
+        if (col.CompareTag("death")||(col.CompareTag("Enemy")))//yan barlara değersek oluyoruz.
         {
             Destroy(gameObject,0.5f);
             playerAnim.SetTrigger("death");
