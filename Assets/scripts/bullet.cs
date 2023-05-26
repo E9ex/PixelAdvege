@@ -30,6 +30,8 @@ public class bullet : MonoBehaviour
         if (col.CompareTag("Enemy"))
         {
             Destroy(col.gameObject,0.5f);
+            Player.score += 9;
+            _player.scoretext.text = "Score: "+Player.score.ToString();
             Destroy(gameObject);
         }
     }

@@ -220,6 +220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7dd237235bcd4a31a3466437e33393f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoretext: {fileID: 0}
   bulletprefab: {fileID: 7516401096093371386, guid: 2f0132a88e4ff42f5ab6235549806ce4, type: 3}
   bulletspawn: {fileID: 8531635162590808284}
   bulletTile: {fileID: 0}

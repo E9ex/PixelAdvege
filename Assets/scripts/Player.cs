@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class Player : MonoBehaviour
 {
@@ -9,20 +11,26 @@ public class Player : MonoBehaviour
     private float speed = 5f;
     private Animator playerAnim;
     private bool kostuMu = false;
+    public static int score = 0;
+    private bullet _bullet;
+    private GameManager _gameManager;
+    [SerializeField] public  Text scoretext;
     [SerializeField] private GameObject bulletprefab;
     [SerializeField] private Transform bulletspawn;
     [SerializeField] private Transform bulletTile;
+    
 
     private void Awake()
     {
-        
+        _gameManager = GameObject.FindObjectOfType<GameManager>();
+        _bullet = GetComponent<bullet>();
         rb = GetComponent<Rigidbody2D>();
         playerAnim = GetComponent<Animator>();
     }
 
     void Start()
     {
-
+        scoretext.text = "Score: " + score;
     }
 
     // Update is called once per frame
@@ -72,10 +80,10 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.CompareTag("death")||(col.CompareTag("Enemy")))//yan barlara değersek oluyoruz.
+        if (col.CompareTag("death")||(col.CompareTag("Enemy")))//yan barlara değersek oluyoruz.ve  değersek ona ölüyoruz.
         {
-            Destroy(gameObject,0.5f);
-            playerAnim.SetTrigger("death");
+            die();
+            _gameManager.StartCoroutine("restartScene");
         }
     }
 
@@ -83,9 +91,16 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            Instantiate(bulletprefab, bulletspawn.position, Quaternion.identity,bulletTile);
+            Instantiate(bulletprefab, bulletspawn.position, Quaternion.identity, bulletTile);
             playerAnim.SetTrigger("shoot");
         }
     }
+
+    public void die()
+    {
+        Destroy(gameObject,0.5f); 
+        playerAnim.SetTrigger("death");
+    }
+  
 }
 
