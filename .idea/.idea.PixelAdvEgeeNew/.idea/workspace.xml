@@ -9,7 +9,6 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$USER_HOME$/Desktop/MyPixelAdventure2Ege/Assets/scripts/Player.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -87,7 +86,7 @@
       <workItem from="1684928572963" duration="1438000" />
       <workItem from="1684931894677" duration="2186000" />
       <workItem from="1684934200550" duration="125000" />
-      <workItem from="1684934391732" duration="13704000" />
+      <workItem from="1684934391732" duration="16803000" />
     </task>
     <servers />
   </component>

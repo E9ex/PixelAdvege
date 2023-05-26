@@ -2,10 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Enemy : MonoBehaviour
 {
    private Animator enemyanim;
+   public  Transform _enemy;
 
    private void Awake()
    {
@@ -18,5 +20,14 @@ public class Enemy : MonoBehaviour
       {
          enemyanim.SetTrigger("deathenemyy");
       }
+   }
+   private void Start()
+   {
+      animMove();
+   }
+
+   private void animMove()
+   {
+      _enemy.DOMoveX(-3.14f, 1f).SetLoops(-1, LoopType.Yoyo);
    }
 }

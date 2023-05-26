@@ -13,7 +13,6 @@ public class Player : MonoBehaviour
     private bool kostuMu = false;
     public static int score = 0;
     private bullet _bullet;
-    private GameManager _gameManager;
     [SerializeField] public  Text scoretext;
     [SerializeField] private GameObject bulletprefab;
     [SerializeField] private Transform bulletspawn;
@@ -22,7 +21,6 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        _gameManager = GameObject.FindObjectOfType<GameManager>();
         _bullet = GetComponent<bullet>();
         rb = GetComponent<Rigidbody2D>();
         playerAnim = GetComponent<Animator>();
@@ -83,7 +81,7 @@ public class Player : MonoBehaviour
         if (col.CompareTag("death")||(col.CompareTag("Enemy")))//yan barlara değersek oluyoruz.ve  değersek ona ölüyoruz.
         {
             die();
-            _gameManager.StartCoroutine("restartScene");
+            GameManager.instance.StartCoroutine("restartScene");//singelton
         }
     }
 
